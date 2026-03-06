@@ -25,6 +25,12 @@ const ToDo = () => {
             data2
         ])
     }
+
+    const Delete = (e) => {
+        data.splice(e.target.id, 1);
+        setData([...data]);
+    }
+
     console.log(data);
 
     return (
@@ -54,11 +60,11 @@ const ToDo = () => {
                 <tbody>
                     {
                         data.map((item, index) => (
-                            <tr>
+                                <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{item.name}</td>
                                 <td>{item.address}</td>
-                                <td><button className="btn btn-primary">Delete</button></td>
+                                <td><button id={index} onClick={Delete} className="btn btn-primary">Delete</button></td>
                             </tr>
                         ))}
                 </tbody>
