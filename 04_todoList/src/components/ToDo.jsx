@@ -14,7 +14,7 @@ const ToDo = () => {
 
     const [data, setData] = useState([
         { name: "Rampreet", address: "Lehra" },
-        // { name: "Sonali", address: "Mohabbat" }
+        { name: "Sonali", address: "Mohabbat" }
     ]);
 
 
@@ -35,15 +35,15 @@ const ToDo = () => {
 
     return (
         <div className='container con'>
-            <h2 className='text-center'>Students</h2>
+            <h2 className='text-center'>STUDENT INFO</h2>
             <form onSubmit={AddData}>
                 <div className="mb-3">
                     <label htmlFor="" className="form-label">Enter Name</label>
-                    <input name='name' onChange={setValue} type="text" className="form-control" value={data2.name} />
+                    <input name='name' onChange={setValue} type="text" className="form-control" value={data2.name} required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="" className="form-label">Address</label>
-                    <input name='address' onChange={setValue} type="text" className="form-control" value={data2.address} />
+                    <input name='address' onChange={setValue} type="text" className="form-control" value={data2.address} required/>
                 </div>
                 <button type="submit" className="btn btn-primary">Add Detail</button>
             </form>
@@ -64,7 +64,7 @@ const ToDo = () => {
                                 <td>{index + 1}</td>
                                 <td>{item.name}</td>
                                 <td>{item.address}</td>
-                                <td><button id={index} onClick={Delete} className="btn btn-primary">Delete</button></td>
+                                <td><button id={index} onClick={Delete} className="btn btn-danger">Delete</button></td>
                             </tr>
                         ))}
                 </tbody>
