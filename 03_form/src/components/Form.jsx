@@ -30,7 +30,7 @@ const Form = () => {
             <label className='label' htmlFor="">PASSWORD</label>
             <div className='pdiv'>
             <input onChange={(e) => { setPass(e.target.value) }} className='inputbox' type= {showP? "text":"password"} />
-            <span onClick={()=>{setShowP(!showP)}}>show</span>
+            <button type='button' onClick={()=>{setShowP(!showP)}}>show</button>
             </div>
             <button onClick={subhandle}> SUBMIT</button>
         </form>
