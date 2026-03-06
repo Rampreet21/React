@@ -1,29 +1,72 @@
-import React from 'react'
+import { useState } from 'react'
 
 const ToDo = () => {
-  return (
-    <div className='container con'>
-        <h2>Students</h2>
-    <form>
-  <div className="mb-3">
-    <label for="exampleInputEmail1" className="form-label">Email address</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div className="mb-3">
-    <label for="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1" />
-  </div>
-  <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-    <label className="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
-</form> 
-    
-    
-    </div>
-  )
+
+    const [data2, setData2] = useState({
+        name: "",
+        address: ""
+    });
+
+    const setValue = (e) => {
+        setData2({ ...data2, [e.target.name]: e.target.value });
+    }
+
+
+    const [data, setData] = useState([
+        { name: "Rampreet", address: "Lehra" },
+        // { name: "Sonali", address: "Mohabbat" }
+    ]);
+
+
+    function AddData(e) {
+        e.preventDefault();
+        setData([
+            ...data,
+            data2
+        ])
+    }
+    console.log(data);
+
+    return (
+        <div className='container con'>
+            <h2 className='text-center'>Students</h2>
+            <form onSubmit={AddData}>
+                <div className="mb-3">
+                    <label htmlFor="" className="form-label">Enter Name</label>
+                    <input name='name' onChange={setValue} type="text" className="form-control" value={data2.name} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="" className="form-label">Address</label>
+                    <input name='address' onChange={setValue} type="text" className="form-control" value={data2.address} />
+                </div>
+                <button type="submit" className="btn btn-primary">Add Detail</button>
+            </form>
+
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        data.map((item, index) => (
+                            <tr>
+                                <td>{index + 1}</td>
+                                <td>{item.name}</td>
+                                <td>{item.address}</td>
+                                <td><button className="btn btn-primary">Delete</button></td>
+                            </tr>
+                        ))}
+                </tbody>
+            </table>
+
+
+        </div>
+    )
 }
 
 export default ToDo
