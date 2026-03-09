@@ -6,11 +6,7 @@ const ToDo = () => {
         { id: 2, name: "Sonali", address: "Mohabbat" }
     ]);
 
-    const [data2, setData2] = useState({
-        id: 0,
-        name: "",
-        address: ""
-    });
+    const [data2, setData2] = useState("");
 
     const setValue = (e) => {
         setData2({ ...data2, [e.target.name]: e.target.value });
@@ -39,9 +35,9 @@ const ToDo = () => {
     }
 
     const Edit = (e) => {
-        let id = e.target.id;
+        let id = e.target.id ;
         setData2({ id: id, name: data[id].name, address: data[id].address });
-        console.log(id + " Selected");
+        console.log(Number(id) + 1 + " Selected");
     }
 
     const Update = () => {
@@ -50,7 +46,7 @@ const ToDo = () => {
         console.log(data[id].name);
         data[id].address = data2.address;
         setData([...data]);
-        console.log(id + " Updated");
+        console.log(Number(id) + 1 + " Updated");
     }
 
     console.log(data);
@@ -61,7 +57,7 @@ const ToDo = () => {
             <form onSubmit={AddData}>
                 <div className="mb-3">
                     {/* <input id='id'  onChange={setValue} type="text" className="form-control" value={data2.id}/> */}
-                    <label htmlFor="" className="form-label">Enter ID</label>
+                    <label htmlFor="" className="form-label">Name</label>
                     <input id='name' name='name' onChange={setValue} type="text" className="form-control" value={data2.name} required />
                 </div>
                 <div className="mb-3">
