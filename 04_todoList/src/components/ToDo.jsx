@@ -15,7 +15,7 @@ const ToDo = () => {
     function AddData(e) {
         e.preventDefault();
        let obj = {
-            id: data.length + 1,
+            id: data[data.length - 1].id + 1,
             name: data2.name,
             address: data2.address
         }
@@ -26,10 +26,6 @@ const ToDo = () => {
     }
 
     const Delete = (e) => {
-        // let id = Number(e.target.id) +1;
-        // for (id, id === data[id].id, id++;) {
-        //     console.log("ID Matched");
-        // }
         data.splice(e.target.id, 1);
         setData([...data]);
     }

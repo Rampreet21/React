@@ -20,23 +20,45 @@ const Todo = () => {
     ]
     
     const [add, setAdd] = useState("");
-    const [todoList, setTodoList] = useState(todoListf);
-
+    const [todoList, setTodoList] = useState( JSON.parse(localStorage.getItem("todoList")) !== null && JSON.parse(localStorage.getItem("todoList")).length > 0 ? JSON.parse(localStorage.getItem("todoList")) : todoListf);
+    
 
     
     function Add(){
+        let id = todoList.length == 0 ? 0 : todoList[todoList.length - 1].id;
         let data = {
-            id: todoList.length + 1,
+            id: id + 1,
             title:add
         }
-        setTodoList([...todoList, data]);
-        
+        setTodoList([...todoList, data]); 
     }
 
     function Delete(id){
-        let newList = todoList.splice(id, 1);
-        setTodoList(newList);
+        let obj =[]
+        console.log(id);
+        for(let i = 0; i < todoList.length; i++){
+            if(todoList[i].id !== id){
+                obj.push(todoList[i]);
+            }
+        }
+        setTodoList(obj);
     }
+    
+    function Edit(id,data){
+        let obj = [];
+        console.log(id);
+        for(let i = 0; i < todoList.length; i++){
+            if(todoList[i].id == id){
+                todoList[i].title = data;
+                obj.push(todoList[i]);
+            }else{
+                obj.push(todoList[i]);
+            }
+        }
+        setTodoList(obj);
+    }
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+
     console.log(todoList);
 
 
@@ -51,7 +73,7 @@ const Todo = () => {
 
         {
             todoList.map((todos)=>{
-                return <TodoItem key={todos.id} todos={todos} onDelete={Delete} />
+                return <TodoItem key={todos.id} todos={todos} onDelete={Delete} onEdit={Edit} />
             })
         }
         
