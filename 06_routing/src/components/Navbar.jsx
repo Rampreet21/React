@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { TiShoppingCart } from "react-icons/ti";
+
 
 const Navbar = () => {
   return (
@@ -18,7 +20,7 @@ const Navbar = () => {
       <Link className="nav-link" to="/products">Products</Link>
     </li>
     <li className="nav-item">
-      <Link className="nav-link" to="/songs">Songs</Link>
+      <Link className="nav-link" to="/cart"><div style={{fontSize:""}}><TiShoppingCart /></div></Link>
     </li>
   </ul>
 </nav>
