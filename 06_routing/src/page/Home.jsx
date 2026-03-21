@@ -1,6 +1,8 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import CartContext from './cartContext';
 const Home = () => {
+  let val = useContext(CartContext);
+      console.log(val);
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Welcome Home 🏠</h1>

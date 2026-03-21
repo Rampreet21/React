@@ -2,9 +2,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
+import { Cartcontextprovider } from './page/cartContext.jsx'
+
 
 createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
+  <BrowserRouter>
+    <Cartcontextprovider>
       <App />
-    </BrowserRouter>
-  )
+    </Cartcontextprovider>
+  </BrowserRouter>
+)

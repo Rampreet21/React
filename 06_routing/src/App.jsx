@@ -9,15 +9,11 @@ import Products from './page/Products'
 
 import { NotFound } from './page/NotFound'
 import Items from './page/Items.jsx'
-import { useState } from 'react'
 
-function App() {
 
-  const [cartItems, setCartItems] = useState([]);
+const App = () => {
 
-  function addToCart(product) {
-    setCartItems([...cartItems, product]);
-  }
+ 
 
   return (
     <div>
@@ -28,8 +24,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<Items addToCart={addToCart} />} />
-        <Route path="/cart" element={<CartItems cartItems={cartItems} />} />
+        <Route path="/products/:id" element={<Items  /> }/> 
+        <Route path="/cart" element={<CartItems  />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
