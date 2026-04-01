@@ -49,6 +49,7 @@ const Todo = () => {
         console.log(id);
         for(let i = 0; i < todoList.length; i++){
             if(todoList[i].id == id){
+                // eslint-disable-next-line react-hooks/immutability
                 todoList[i].title = data;
                 obj.push(todoList[i]);
             }else{
